@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Gameweek:</strong>
+  <%= @fixture.gameweek %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @fixture.location %>
+</p>
+
+<p>
+  <strong>Team 1:</strong>
+  <%= @fixture.team_1 %>
+</p>
+
+<p>
+  <strong>Team 2:</strong>
+  <%= @fixture.team_2 %>
+</p>
+
+<p>
+  <strong>Team 1 score:</strong>
+  <%= @fixture.team_1_score %>
+</p>
+
+<p>
+  <strong>Team 2 score:</strong>
+  <%= @fixture.team_2_score %>
+</p>
+
+<p>
+  <strong>Competition:</strong>
+  <%= @fixture.competition_id %>
+</p>
+
+<%= link_to 'Edit', edit_fixture_path(@fixture) %> |
+<%= link_to 'Back', fixtures_path %>

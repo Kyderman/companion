@@ -1,0 +1,185 @@
+<div class="jumbotron text-center no-b-pad white-b blue-t">
+			<h1>Welcome, <%=current_user.name%></h1>
+			<hr class="blue">
+			<div class="col-md-offset-4 col-md-4 col-md-offset-4">
+				<%=link_to '<span class="glyphicon glyphicon-plus"></span> Team'.html_safe, new_team_path, :class => 'btn btn-default' %>
+			
+			<%=link_to '<span class="glyphicon glyphicon-plus"></span> Competition'.html_safe, new_competition_path, :class => 'btn btn-default' %>
+			</div>
+			<br>
+		</div>
+		<div class="blue-b white-t">
+		<div class="container">
+			<div class="col-md-6">
+				<h2>Teams</h2>
+				<ul class="pager">
+					<li class="previous"><a href="#">Previous</a></li>
+					<li class="next"><a href="#">Next</a></li>
+				</ul>
+				<div class="list-group">
+					<a href="#" class="list-group-item"> 
+						Pool 1st Team
+						<span class="hidden-xs pull-right">
+							<span class="badge">Pool</span>
+						</span>
+						<span class="visible-xs">
+							<div class="row container">
+							<span class="badge">Pool</span>
+							</div>
+						</span>
+					</a>
+					<a href="team-show.html" class="list-group-item"> 
+						Eastwood Tropics
+						<span class="hidden-xs pull-right">
+							<span class="badge">Football</span>
+						</span>
+						<span class="visible-xs">
+							<div class="row container">
+							<span class="badge">Football</span>
+							</div>
+						</span>
+					</a>
+					<a href="#" class="list-group-item"> 
+						Computer Science
+						<span class="hidden-xs pull-right">
+							<span class="badge">Football</span>
+						</span>
+						<span class="visible-xs">
+							<div class="row container">
+							<span class="badge">Football</span>
+							</div>
+						</span>
+					</a>
+				</div>
+			</div>
+			
+			<div class="col-md-6">
+				<h2>Competitions</h2>
+				<ul class="pager">
+					<li class="previous"><a href="#">Previous</a></li>
+					<li class="next"><a href="#">Next</a></li>
+				</ul>
+				<div class="list-group">
+					<a href="competition-show.html" class="list-group-item"> 
+						IHFC
+						<span class="hidden-xs pull-right">
+							<span class="badge">Eastwood Tropics</span>
+							<span class="badge">1st</span>
+						</span>
+						<span class="visible-xs">
+							<div class="row container">
+							<span class="badge">Eastwood Tropics</span>
+							<span class="badge">1st</span>
+							</div>
+						</span>
+					</a>
+					<a href="#" class="list-group-item"> 
+						IDFC
+						<span class="hidden-xs pull-right">
+							<span class="badge">Computer Science</span>
+							<span class="badge">8th</span>
+						</span>
+						<span class="visible-xs">
+							<div class="row container">
+							<span class="badge">Computer Science</span>
+							<span class="badge">8th</span>
+							</div>
+						</span>
+					</a>
+				</div>	
+			</div>
+		</div>
+		<br>
+		</div>
+		
+		<div class="white-b blue-t">
+		<div class="container">
+			<div class="col-md-6">
+				<h2>Recent Results</h2>
+				<div class="list-group">
+					<a href="fixture-show.html" class="list-group-item"> 
+						vs Westwood A
+						<span class="hidden-xs pull-right">
+							<span class="badge">Eastwood Tropics</span>
+							<span class="badge">IHFC</span>
+							<span class="badge">2-1</span>
+						</span>
+						<span class="visible-xs">
+							<div class="row container">
+							<span class="badge">Eastwood Tropics</span>
+							<span class="badge">IHFC</span>
+							<span class="badge">2-1</span>
+							</div>
+						</span>
+					</a>
+					<a href="#" class="list-group-item"> 
+						vs Natural Sciences
+						<span class="hidden-xs pull-right">
+							<span class="badge">Computer Science</span>
+							<span class="badge">IDFC</span>
+							<span class="badge">0-5</span>
+						</span>
+						<span class="visible-xs">
+							<div class="row container">
+							<span class="badge">Computer Science</span>
+							<span class="badge">IDFC</span>
+							<span class="badge">0-5</span>
+							</div>
+						</span>
+					</a>
+					<a href="#" class="list-group-item"> 
+						vs City
+						<span class="hidden-xs pull-right">
+							<span class="badge">Eastwood Tropics</span>
+							<span class="badge">IHFC</span>
+							<span class="badge">3-0</span>
+						</span>
+						<span class="visible-xs">
+							<div class="row container">
+							<span class="badge">Eastwood Tropics</span>
+							<span class="badge">IHFC</span>
+							<span class="badge">3-0</span>
+							</div>
+						</span>
+					</a>
+				</div>
+			</div>
+			
+			<div class="col-md-6">
+				<h2>Upcoming Fixtures</h2>
+				<div class="list-group">
+					<a href="#" class="list-group-item"> 
+					vs. Norwood
+						<span class="hidden-xs pull-right">
+							<span class="badge">Eastwood Tropics</span>
+							<span class="badge">IHFC</span>
+						</span>
+						<span class="visible-xs">
+							<div class="row container">
+							<span class="badge">Eastwood Tropics</span>
+							<span class="badge">IHFC</span>
+							</div>
+						</span>
+					</a>
+					<a href="#" class="list-group-item"> 
+					vs. Maths
+						<span class="hidden-xs pull-right">
+							<span class="badge">Computer Science</span>
+							<span class="badge">IDFC</span>
+						</span>
+						<span class="visible-xs">
+							<div class="row container">
+							<span class="badge">Computer Science</span>
+							<span class="badge">IDFC</span>
+							</div>
+						</span>
+					</a>
+				</div>	
+			</div>
+			<div class="col-md-12">
+				<a href="user-fixtures.html" class="btn btn-default btn-block" role="button">Show All</a>
+			</div>
+		</div>
+		<br>
+		</div>
+	

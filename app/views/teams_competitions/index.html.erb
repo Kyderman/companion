@@ -1,0 +1,29 @@
+<h1>Listing teams_competitions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Team</th>
+      <th>Competition</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teams_competitions.each do |teams_competition| %>
+      <tr>
+        <td><%= teams_competition.team_id %></td>
+        <td><%= teams_competition.competition_id %></td>
+        <td><%= link_to 'Show', teams_competition %></td>
+        <td><%= link_to 'Edit', edit_teams_competition_path(teams_competition) %></td>
+        <td><%= link_to 'Destroy', teams_competition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Teams competition', new_teams_competition_path %>

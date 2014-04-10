@@ -1,0 +1,17 @@
+<%= simple_form_for(@fixture) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :gameweek %>
+    <%= f.input :location %>
+    <%= f.input :team_1 %>
+    <%= f.input :team_2 %>
+    <%= f.input :team_1_score %>
+    <%= f.input :team_2_score %>
+    <%= f.input :competition_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
