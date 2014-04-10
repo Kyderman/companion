@@ -10,8 +10,8 @@
 #
 GMAIL_USERNAME: Your_Username
 GMAIL_PASSWORD: Your_Password
-ADMIN_NAME: First User
-ADMIN_EMAIL: user@example.com
-ADMIN_PASSWORD: changeme
+ADMIN_NAME: Admin
+ADMIN_EMAIL: kyle@kyleselman.co.uk
+ADMIN_PASSWORD: 12345678
 ROLES: [admin, user]
 
