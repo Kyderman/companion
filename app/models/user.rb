@@ -6,5 +6,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :team_roster
   has_many :teams, through: :team_roster
-  has_many :competitions, through: :teams
+  has_many :competitions, :foreign_key => 'owner'
 end

@@ -18,7 +18,7 @@
 				</ul>
 				<div class="list-group">
 					<%@teams.each do |t|%>
-					<a href="#" class="list-group-item"> 
+					<a href=<%=team_path(t)%> class="list-group-item"> 
 						<%=t.name%>
 						<span class="hidden-xs pull-right">
 							<span class="badge"><%=t.sport%></span>
@@ -40,9 +40,24 @@
 					<li class="next"><a href="#">Next</a></li>
 				</ul>
 				<div class="list-group">
+					<%@owned_comp.each do |c|%>
+					
+					<a href=<%=competition_path(c)%> class="list-group-item"> 
+						<%=c.name%>
+						<span class="hidden-xs pull-right">
+							<span class="badge">Owner</span>
+						</span>
+						<span class="visible-xs">
+							<div class="row container">
+							<span class="badge">Owner</span>
+							</div>
+						</span>
+					</a>
+					
+					<%end%>
 					<%@teams.each do |t|%>
 					<%t.competitions.each do |c|%>
-					<a href="competition-show.html" class="list-group-item"> 
+					<a href=<%=competition_path(c)%> class="list-group-item"> 
 						<%=c.name%>
 						<span class="hidden-xs pull-right">
 							<span class="badge"><%=t.name%></span>
@@ -65,84 +80,59 @@
 		<div class="container">
 			<div class="col-md-6">
 				<h2>Recent Results</h2>
+				
 				<div class="list-group">
-					<a href="fixture-show.html" class="list-group-item"> 
-						vs Westwood A
+					
+					<%@recent_result.each do |f|%>
+					<%fix = f[0]%>
+					<%cur_team = f[1]%>
+					
+					<a href=<%=fixture_path(fix)%> class="list-group-item"> 
+						vs <%=Team.find(fix.getOpponent(cur_team.id)).name%>
 						<span class="hidden-xs pull-right">
-							<span class="badge">Eastwood Tropics</span>
-							<span class="badge">IHFC</span>
-							<span class="badge">2-1</span>
+							<span class="badge"><%=cur_team.name%></span>
+							<span class="badge"><%=Competition.find(fix.competition_id).name%></span>
+							<span class="badge"><%=fix.getDashRes(cur_team.id)%></span>
 						</span>
 						<span class="visible-xs">
 							<div class="row container">
-							<span class="badge">Eastwood Tropics</span>
-							<span class="badge">IHFC</span>
-							<span class="badge">2-1</span>
+							<span class="badge"><%=cur_team.name%></span>
+							<span class="badge"><%=Competition.find(fix.competition_id).name%></span>
+							<span class="badge"><%=fix.getDashRes(cur_team.id)%></span>
 							</div>
 						</span>
 					</a>
-					<a href="#" class="list-group-item"> 
-						vs Natural Sciences
-						<span class="hidden-xs pull-right">
-							<span class="badge">Computer Science</span>
-							<span class="badge">IDFC</span>
-							<span class="badge">0-5</span>
-						</span>
-						<span class="visible-xs">
-							<div class="row container">
-							<span class="badge">Computer Science</span>
-							<span class="badge">IDFC</span>
-							<span class="badge">0-5</span>
-							</div>
-						</span>
-					</a>
-					<a href="#" class="list-group-item"> 
-						vs City
-						<span class="hidden-xs pull-right">
-							<span class="badge">Eastwood Tropics</span>
-							<span class="badge">IHFC</span>
-							<span class="badge">3-0</span>
-						</span>
-						<span class="visible-xs">
-							<div class="row container">
-							<span class="badge">Eastwood Tropics</span>
-							<span class="badge">IHFC</span>
-							<span class="badge">3-0</span>
-							</div>
-						</span>
-					</a>
+					
+					
+					<%end%>
 				</div>
 			</div>
 			
 			<div class="col-md-6">
 				<h2>Upcoming Fixtures</h2>
 				<div class="list-group">
-					<a href="#" class="list-group-item"> 
-					vs. Norwood
+					<%@upcoming_fixture.each do |f|%>
+					<%fix = f[0]%>
+					<%cur_team = f[1]%>
+					<a href=<%=fixture_path(fix)%> class="list-group-item"> 
+						vs <%=Team.find(fix.getOpponent(cur_team.id)).name%>
 						<span class="hidden-xs pull-right">
-							<span class="badge">Eastwood Tropics</span>
-							<span class="badge">IHFC</span>
+							<span class="badge"><%=cur_team.name%></span>
+							<span class="badge"><%=Competition.find(fix.competition_id).name%></span>
+							
 						</span>
 						<span class="visible-xs">
 							<div class="row container">
-							<span class="badge">Eastwood Tropics</span>
-							<span class="badge">IHFC</span>
+							<span class="badge"><%=cur_team.name%></span>
+							<span class="badge"><%=Competition.find(fix.competition_id).name%></span>
+							
 							</div>
 						</span>
 					</a>
-					<a href="#" class="list-group-item"> 
-					vs. Maths
-						<span class="hidden-xs pull-right">
-							<span class="badge">Computer Science</span>
-							<span class="badge">IDFC</span>
-						</span>
-						<span class="visible-xs">
-							<div class="row container">
-							<span class="badge">Computer Science</span>
-							<span class="badge">IDFC</span>
-							</div>
-						</span>
-					</a>
+					
+					
+					<%end%>
+					
 				</div>	
 			</div>
 			<div class="col-md-12">

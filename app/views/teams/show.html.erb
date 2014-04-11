@@ -12,7 +12,7 @@
 
 <p>
   <strong>Owner:</strong>
-  <%= @team.owner %>
+  <%= User.where(:id => @team.owner).first.name %>
 </p>
 
 <%= link_to 'Edit', edit_team_path(@team) %> |
