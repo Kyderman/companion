@@ -13,6 +13,7 @@ gem 'devise'
 gem 'figaro'
 gem 'pg'
 gem 'rolify'
+gem 'cocoon'
 gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby
 gem 'rails_12factor', group: :production

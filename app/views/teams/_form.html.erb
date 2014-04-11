@@ -5,8 +5,19 @@
     <%= f.input :name %>
     <%= f.input :sport %>
   </div>
-
+	<div id="users">
+		<%= f.simple_fields_for :teams_users do |teams_user|%>
+			<%= render 'teams_user_fields', :f => teams_user%>
+		
+		<%end%>	
+		<div class="links">
+		<%= link_to_add_association 'Add User', f, :teams_users, :class=>"btn btn-default"%>
+	</div>
+	</div>
+	
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class=>"btn btn-default" %>
   </div>
 <% end %>
+
+

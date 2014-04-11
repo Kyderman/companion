@@ -42,6 +42,9 @@ class TeamsController < ApplicationController
   # PATCH/PUT /teams/1
   # PATCH/PUT /teams/1.json
   def update
+    @team.teams_users.each do |l|
+      l.destroy
+    end
     respond_to do |format|
       if @team.update(team_params)
         format.html { redirect_to @team, notice: 'Team was successfully updated.' }
@@ -71,6 +74,6 @@ class TeamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
-      params.require(:team).permit(:name, :sport, :owner)
+      params.require(:team).permit(:name, :sport, :owner, teams_users_attributes: [:user_id, :team_id, :_destroy])
     end
 end

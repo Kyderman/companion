@@ -4,3 +4,8 @@
 
 <%= link_to 'Show', @team %> |
 <%= link_to 'Back', teams_path %>
+
+<h1>users</h1>
+<%@team.users.each do |t|%>
+<%=t.name%>
+<%end%>

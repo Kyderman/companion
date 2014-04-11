@@ -1,0 +1,29 @@
+<h1>Listing teams_users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Team</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teams_users.each do |teams_user| %>
+      <tr>
+        <td><%= teams_user.team_id %></td>
+        <td><%= teams_user.user_id %></td>
+        <td><%= link_to 'Show', teams_user %></td>
+        <td><%= link_to 'Edit', edit_teams_user_path(teams_user) %></td>
+        <td><%= link_to 'Destroy', teams_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Teams user', new_teams_user_path %>

@@ -15,5 +15,10 @@
   <%= User.where(:id => @team.owner).first.name %>
 </p>
 
+<h1>users</h1>
+<%@team.users.each do |t|%>
+<%=t.name%>
+<%end%>
+
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>

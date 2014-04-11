@@ -1,0 +1,9 @@
+<div class="nested-fields teams-user-fields">
+	<div id="user_from_list">
+		<%= f.association :user, :collection => User.all%>
+	
+	<%= link_to_remove_association 'remove user',f, :class=>"btn btn-default"%>
+	
+	</div>
+	
+</div>

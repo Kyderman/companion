@@ -1,4 +1,6 @@
 Companion::Application.routes.draw do
+  resources :teams_users
+
   resources :fixtures
 
   resources :teams_competitions
