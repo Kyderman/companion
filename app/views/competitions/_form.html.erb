@@ -5,7 +5,17 @@
     <%= f.input :name %>
     <%= f.input :sport %>
   </div>
-
+	<div id="teams">
+		<%= f.simple_fields_for :teams_competitions do |teams_competition|%>
+			<%= render 'teams_competition_fields', :f => teams_competition%>
+		
+		<%end%>	
+		<%if (controller.action_name != 'edit')%>
+		<div class="links">
+		<%= link_to_add_association 'Add Team', f, :teams_competitions, :class=>"btn btn-default"%>
+		</div>
+		<%end%>
+	</div>
   <div class="form-actions">
     <%= f.button :submit %>
   </div>

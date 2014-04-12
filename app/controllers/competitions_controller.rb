@@ -41,6 +41,9 @@ class CompetitionsController < ApplicationController
   # PATCH/PUT /competitions/1
   # PATCH/PUT /competitions/1.json
   def update
+    @competition.teams_competitions.each do |l|
+      l.destroy
+    end
     respond_to do |format|
       if @competition.update(competition_params)
         format.html { redirect_to @competition, notice: 'Competition was successfully updated.' }
@@ -70,6 +73,6 @@ class CompetitionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def competition_params
-      params.require(:competition).permit(:name, :sport, :owner)
+      params.require(:competition).permit(:name, :sport, :owner, teams_competitions_attributes: [:competition_id, :team_id, :_destroy])
     end
 end
