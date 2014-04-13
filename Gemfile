@@ -15,7 +15,7 @@ gem 'pg'
 gem 'rolify'
 gem 'cocoon'
 gem 'simple_form'
-
+gem 'therubyracer', :platform=>:ruby
 gem 'rails_12factor', group: :production
 gem 'high_voltage', '~> 2.1.0'
 group :development do
