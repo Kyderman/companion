@@ -19,11 +19,6 @@ class Competition < ActiveRecord::Base
       team_array.push(bye = Team.new(:name => "bye12"))  
     end
     
-    
-    
-    
-    
-    
     round = 1
     
     
