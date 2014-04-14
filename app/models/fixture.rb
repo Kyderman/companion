@@ -2,6 +2,20 @@ class Fixture < ActiveRecord::Base
   belongs_to :competition
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   def getOpponent(team)
     if(self.team_1 == team)
       return self.team_2

@@ -29,6 +29,7 @@ class CompetitionsController < ApplicationController
     respond_to do |format|
       if @competition.save
         @competition.update(:owner => current_user.id)
+        @competition.createFixtures()
         format.html { redirect_to @competition, notice: 'Competition was successfully created.' }
         format.json { render action: 'show', status: :created, location: @competition }
       else
