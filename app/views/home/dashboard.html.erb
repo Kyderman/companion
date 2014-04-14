@@ -3,7 +3,7 @@
 			<hr class="blue">
 			<div class="col-md-offset-4 col-md-4 col-md-offset-4">
 				<%=link_to '<span class="glyphicon glyphicon-plus"></span> Team'.html_safe, new_team_path, :class => 'btn btn-default' %>
-				<%=link_to 'Profile'.html_safe, user_path(current_user), :class => 'btn btn-default' %>
+				<%=link_to 'Profile', user_path(current_user), :class => 'btn btn-default' %>
 				<%=link_to '<span class="glyphicon glyphicon-plus"></span> Competition'.html_safe, new_competition_path, :class => 'btn btn-default' %>
 			</div>
 			<br>
@@ -81,7 +81,7 @@
 					<%@recent_result.each do |f|%>
 					<%fix = f[0]%>
 					<%cur_team = f[1]%>
-					
+					<%puts @recent_result%>
 					<a href=<%=fixture_path(fix)%> class="list-group-item"> 
 						vs <%=Team.find(fix.getOpponent(cur_team.id)).name%>
 						<span class="hidden-xs pull-right">
@@ -131,7 +131,7 @@
 				</div>	
 			</div>
 			<div class="col-md-12">
-				<a href="user-fixtures.html" class="btn btn-default btn-block" role="button">Show All</a>
+				<%= link_to 'Show All Fixtures', fixtures_path, :class=>'btn btn-default btn-block'%>
 			</div>
 		</div>
 		<br>

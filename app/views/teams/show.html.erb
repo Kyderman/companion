@@ -1,24 +1,121 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @team.name %>
-</p>
-
-<p>
-  <strong>Sport:</strong>
-  <%= @team.sport %>
-</p>
-
-<p>
-  <strong>Owner:</strong>
-  <%= User.where(:id => @team.owner).first.name %>
-</p>
-
-<h1>users</h1>
-<%@team.users.each do |t|%>
-<%=t.name%>
-<%end%>
-
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+<div class="jumbotron text-center no-b-pad white-b blue-t">
+			<h1><%=@team.name%></h1>
+			<h2><%=@team.sport%></h2>
+			<hr class="blue">
+			<div class="col-md-offset-4 col-md-4 col-md-offset-4">
+			
+			</div>
+			<br>
+		</div>
+		<div class="blue-b white-t">
+		<div class="container">
+			<div class="col-md-6">
+				<h2>Players</h2>
+				
+				<div class="list-group">
+					<%@players.each do |player|%>
+					<a href=<%=user_path(player)%> class="list-group-item"> 
+						<%= player.name%>
+						<span class="hidden-xs pull-right">
+							<%if (player.id == @team.owner)%>
+							<span class="badge">Owner</span>
+							<%end%>
+						</span>
+						<span class="visible-xs">
+							<div class="row container">
+							<%if (player.id == @team.owner)%>
+							<span class="badge">Owner</span>
+							<%end%>
+							</div>
+						</span>
+					</a>
+					<%end%>
+				</div>
+					
+				
+				
+			</div>
+			
+			
+			<div class="col-md-6">
+				<h2>Competitions</h2>
+				
+				<div class="list-group">
+					<%@competitions.each do |comp|%>
+					<%pos = comp.getLeaguePos(@team)%>
+					<a href=<%=competition_path(comp)%> class="list-group-item"> 
+						<%=comp.name%>
+						<span class="hidden-xs pull-right">
+							<span class="badge"><%=pos%></span>
+						</span>
+						<span class="visible-xs">
+							<div class="row container">
+								<span class="badge"><%=pos%></span>
+							</div>
+						</span>
+					</a>
+					<%end%>	
+				</div>
+				
+			</div>
+		</div>
+		<br>
+		</div>
+		
+		<div class="white-b blue-t">
+		<div class="container">
+			<div class="col-md-6">
+				<h2>Recent Results</h2>
+				
+				<div class="list-group">
+					<%@recentRes.each do |f|%>
+					<%opponent = Team.find(f.getOpponent(@team.id))%>
+					<%score = f.getDashRes(@team.id)%>
+					<a href=<%=fixture_path(f)%> class="list-group-item"> 
+						<%=opponent.name%>
+						<span class="hidden-xs pull-right">
+							<span class="badge"><%=Competition.find(f.competition_id).name%></span>
+							<span class="badge"><%=score%></span>
+						</span>
+						<span class="visible-xs">
+							<div class="row container">
+							<span class="badge"><%=Competition.find(f.competition_id).name%></span>
+							<span class="badge"><%=score%></span>
+							</div>
+						</span>
+					</a>
+					<%end%>
+				</div>
+			</div>
+			
+			<div class="col-md-6">
+				<h2>Upcoming Fixtures</h2>
+				<div class="list-group">
+					<%@upcoming.each do |f|%>
+					<%opponent = Team.find(f.getOpponent(@team.id))%>
+					<a href=<%=fixture_path(f)%> class="list-group-item"> 
+					<%=opponent.name%>
+						<span class="hidden-xs pull-right">
+							<span class="badge"><%=Competition.find(f.competition_id).name%></span>
+							<span class="badge"><%=f.gameweek%></span>
+						</span>
+						<span class="visible-xs">
+							<div class="row container">
+							<span class="badge"><%=Competition.find(f.competition_id).name%></span>
+							<span class="badge"><%=f.gameweek%></span>
+							</div>
+						</span>
+					</a>
+					<%end%>
+				</div>	
+			</div>
+			<div class="col-md-12">
+			<a href="team-fixtures.html" class="btn btn-default btn-block" role="button">Show All</a>
+			</div>
+		</div>
+		
+		<br>
+		</div>
+	

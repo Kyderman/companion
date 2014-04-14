@@ -29,10 +29,12 @@ class Fixture < ActiveRecord::Base
     user.teams.each do |t|
     t.competitions.each do |c|
       c.fixtures.each do |f|
-        if f.team_1_score == nil
+        if (f.team_1_score == nil)
           next
         else
-          res.push([f, t])
+          if(f.team_1 == t.id || f.team_2 == t.id)
+            res.push([f, t])
+          end
         end
       end
     end
@@ -40,21 +42,60 @@ class Fixture < ActiveRecord::Base
     res.sort_by! {|e| -e[0].id}
     return res
   end
+
+  def self.getRecentTeamRes(team)
+    res = []
+   
+    team.competitions.each do |c|
+      c.fixtures.each do |f|
+        if (f.team_1_score == nil)
+          next
+        else
+          if(f.team_1 == team.id || f.team_2 == team.id)
+            res.push(f)
+          end
+        end
+      end
+    end
+    res.sort_by! {|e| -e.id}
+    return res
+  end  
+  
+  def self.getTeamUpcoming(team)
+    res = []
+    team.competitions.each do |c|
+      c.fixtures.each do |f|
+        if (f.team_1_score == nil)
+          if(f.team_1 == team.id || f.team_2 == team.id)
+            res.push(f)
+          end
+        else
+          next
+        end
+      end
+    
+    end
+    res.sort_by! {|e| e.gameweek}
+    return res
+  end
+  
   
   def self.getUpcoming(user)
     res = []
     user.teams.each do |t|
     t.competitions.each do |c|
       c.fixtures.each do |f|
-        if f.team_1_score == nil
-          res.push([f, t])
+        if (f.team_1_score == nil)
+          if(f.team_1 == t.id || f.team_2 == t.id)
+            res.push([f, t])
+          end
         else
           next
         end
       end
     end
     end
-    res.sort_by! {|e| e[0].id}
+    res.sort_by! {|e| e[0].gameweek}
     return res
   end
   

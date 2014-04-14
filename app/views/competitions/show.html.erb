@@ -1,19 +1,112 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @competition.name %>
-</p>
+<div class="jumbotron text-center no-b-pad white-b blue-t">
+			<h1><%= @competition.name%></h1>
+			<h2><%= @competition.sport%></h2>
+			<hr class="blue">
+			<div class="col-md-offset-4 col-md-4 col-md-offset-4">
+				<%= link_to 'Edit', edit_competition_path(@competition), :class => 'btn btn-default' %>
+			</div>
+			<br>
+		</div>
+		<div class="blue-b white-t">
+		<div class="container">
+			<div class="col-md-12">
+				<h2>League Table</h2>
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Team</th>
+								<th>Played</th>
+								<th>Won</th>
+								<th>Draw</th>
+								<th>Lost</th>
+								<th>G+</th>
+								<th>G-</th>
+								<th>G Dif</th>
+								<th>Pts</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%@teams.each do |team|%>
+							<%@team_object = Team.find(team[0])%>
+							<tr>
+								<td><%= link_to @team_object.name, team_path(@team_object), :class => 'white-t'%></td>
+								<td><%= team[1]%></td>
+								<td><%= team[2]%></td>
+								<td><%= team[3]%></td>
+								<td><%= team[4]%></td>
+								<td><%= team[5]%></td>
+								<td><%= team[6]%></td>
+								<td><%= team[5] - team[6]%></td>
+								<td><%= team[7]%></td>
+							</tr>
+							<%end%>
+						</tbody>
+					</table>
+				</div>
+				
+			</div>
+		</div>
+		<br>
+		</div>
+		
+		<div class="white-b blue-t">
+		<div class="container">
+			<div class="col-md-6">
+				<h2>Recent Results</h2>
 
-<p>
-  <strong>Sport:</strong>
-  <%= @competition.sport %>
-</p>
+				<div class="list-group">
+					<%@recentResults.each do |res|%>
+					<%team1 = Team.find(res.team_1)%>
+					<%team2 = Team.find(res.team_2)%>
+					<%score1 = res.team_1_score.to_s%>
+					<%score2 = res.team_2_score.to_s%>
+					<%gw = res.gameweek.to_s%>
+					<a href=<%=fixture_path(res)%> class="list-group-item"> 
+						<%= team1.name + ' vs ' + team2.name%>
+						<span class="hidden-xs pull-right">
+							<span class="badge"><%="Gameweek " + gw%></span>
+							<span class="badge"><%=score1 + ' - ' + score2%></span>
+						</span>
+						<span class="visible-xs">
+							<div class="row container">
+							<span class="badge"><%="Gameweek " + gw%></span>
+							<span class="badge"><%=score1 + ' - ' + score2%></span>
+							</div>
+						</span>
+					</a>
+					<%end%>
+				</div>
+			</div>
+			
+			<div class="col-md-6">
+				<h2>Upcoming Fixtures</h2>
 
-<p>
-  <strong>Owner:</strong>
-  <%= @competition.owner %>
-</p>
-
-<%= link_to 'Edit', edit_competition_path(@competition) %> |
-<%= link_to 'Back', competitions_path %>
+				<div class="list-group">
+					<%@upcomingFixtures.each do |res|%>
+					<%team1 = Team.find(res.team_1)%>
+					<%team2 = Team.find(res.team_2)%>
+					<%gw = res.gameweek.to_s%>
+					<a href=<%=fixture_path(res)%> class="list-group-item"> 
+						<%= team1.name + ' vs ' + team2.name%>
+						<span class="hidden-xs pull-right">
+							<span class="badge"><%="Gameweek " + gw%></span>
+						</span>
+						<span class="visible-xs">
+							<div class="row container">
+							<span class="badge"><%="Gameweek " + gw%></span>
+							</div>
+						</span>
+					</a>
+					<%end%>
+				</div>
+			</div>
+			<div class="col-md-12">
+			<a href="competition-fixtures.html" class="btn btn-default btn-block" role="button">Show All</a>
+			</div>
+		</div>
+		
+		<br>
+		</div>

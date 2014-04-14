@@ -10,6 +10,10 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+    @players = @team.users
+    @competitions = @team.competitions
+    @recentRes = Fixture.getRecentTeamRes(@team)
+    @upcoming = Fixture.getTeamUpcoming(@team)
   end
 
   # GET /teams/new

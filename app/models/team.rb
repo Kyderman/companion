@@ -9,4 +9,5 @@ class Team < ActiveRecord::Base
   accepts_nested_attributes_for :competitions
   has_many :fixtures
   
+  
 end

@@ -10,6 +10,12 @@ class CompetitionsController < ApplicationController
   # GET /competitions/1
   # GET /competitions/1.json
   def show
+    @teams = @competition.calcLeague()
+    
+    @recentResults = @competition.fixtures.where("team_1_score IS NOT NULL")
+    @upcomingFixtures = @competition.fixtures.where(:team_1_score => nil)
+    
+    @upcomingFixtures.sort_by! {|f| f.gameweek}
   end
 
   # GET /competitions/new
