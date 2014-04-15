@@ -2,9 +2,8 @@
 	<h1>Edit <%=@competition.name%></h1>
 	<hr class="blue">
 	<%= link_to 'View', @competition, :class => 'btn btn-default' %> 
+	<%= link_to 'Remove', @competition, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default' %>
 </div>
-<div class="blue-b white-t">
-	<div class="container">
-		<%= render 'form' %>
+<%= render 'form' %>
 	
 

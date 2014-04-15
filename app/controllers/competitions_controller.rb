@@ -33,7 +33,7 @@ class CompetitionsController < ApplicationController
     @competition = Competition.new(competition_params)
 
     respond_to do |format|
-      if @competition.save
+      if @competition.save!
         @competition.update(:owner => current_user.id)
         @competition.createFixtures()
         format.html { redirect_to @competition, notice: 'Competition was successfully created.' }
@@ -53,6 +53,13 @@ class CompetitionsController < ApplicationController
     end
     respond_to do |format|
       if @competition.update(competition_params)
+        
+          @competition.fixtures.each do |f|
+            if (!@competition.teams.include?(Team.find(f.team_1)) ||  !@competition.teams.include?(Team.find(f.team_2)))
+              f.destroy
+            end
+          end
+        
         format.html { redirect_to @competition, notice: 'Competition was successfully updated.' }
         format.json { head :no_content }
       else
