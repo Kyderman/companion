@@ -16,7 +16,7 @@ gem 'rolify'
 gem 'cocoon'
 gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby
-
+gem 'simple_form_bootstrap3'
 
 
 gem 'rails_12factor', group: :production

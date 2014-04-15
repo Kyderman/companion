@@ -1,11 +1,13 @@
-<p id="notice"><%= notice %></p>
+
 
 <div class="jumbotron text-center no-b-pad white-b blue-t">
 			<h1><%=@team.name%></h1>
 			<h2><%=@team.sport%></h2>
 			<hr class="blue">
 			<div class="col-md-offset-4 col-md-4 col-md-offset-4">
-			
+				<%if(current_user.id == @team.owner)%>
+					<%=link_to 'Edit', edit_team_path(@team), :class => 'btn btn-default'%>
+				<%end%>
 			</div>
 			<br>
 		</div>
@@ -18,7 +20,7 @@
 					<%@players.each do |player|%>
 					<a href=<%=user_path(player)%> class="list-group-item"> 
 						<%= player.name%>
-						<span class="hidden-xs pull-right">
+						<span class="hidden-xs">
 							<%if (player.id == @team.owner)%>
 							<span class="badge">Owner</span>
 							<%end%>
@@ -44,15 +46,15 @@
 				
 				<div class="list-group">
 					<%@competitions.each do |comp|%>
-					<%pos = comp.getLeaguePos(@team)%>
+					<%pos = comp.getLeaguePos(@team).to_s%>
 					<a href=<%=competition_path(comp)%> class="list-group-item"> 
 						<%=comp.name%>
-						<span class="hidden-xs pull-right">
-							<span class="badge"><%=pos%></span>
+						<span class="hidden-xs">
+							<span class="badge"><%="position: "+ pos%></span>
 						</span>
 						<span class="visible-xs">
 							<div class="row container">
-								<span class="badge"><%=pos%></span>
+								<span class="badge"><%="position: "+ pos%></span>
 							</div>
 						</span>
 					</a>
@@ -75,14 +77,16 @@
 					<%score = f.getDashRes(@team.id)%>
 					<a href=<%=fixture_path(f)%> class="list-group-item"> 
 						<%=opponent.name%>
-						<span class="hidden-xs pull-right">
+						<span class="hidden-xs">
 							<span class="badge"><%=Competition.find(f.competition_id).name%></span>
 							<span class="badge"><%=score%></span>
+							<span class="badge"><%="Gameweek " + f.gameweek.to_s%></span>
 						</span>
 						<span class="visible-xs">
 							<div class="row container">
 							<span class="badge"><%=Competition.find(f.competition_id).name%></span>
 							<span class="badge"><%=score%></span>
+							<span class="badge"><%="Gameweek " + f.gameweek.to_s%></span>
 							</div>
 						</span>
 					</a>
@@ -99,12 +103,12 @@
 					<%=opponent.name%>
 						<span class="hidden-xs pull-right">
 							<span class="badge"><%=Competition.find(f.competition_id).name%></span>
-							<span class="badge"><%=f.gameweek%></span>
+							<span class="badge"><%="Gameweek " + f.gameweek.to_s%></span>
 						</span>
 						<span class="visible-xs">
 							<div class="row container">
 							<span class="badge"><%=Competition.find(f.competition_id).name%></span>
-							<span class="badge"><%=f.gameweek%></span>
+							<span class="badge"><%="Gameweek " + f.gameweek.to_s%></span>
 							</div>
 						</span>
 					</a>

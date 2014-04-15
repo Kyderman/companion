@@ -16,7 +16,7 @@
 					<%@teams.each do |t|%>
 					<a href=<%=team_path(t)%> class="list-group-item"> 
 						<%=t.name%>
-						<span class="hidden-xs pull-right">
+						<span class="hidden-xs">
 							<span class="badge"><%=t.sport%></span>
 							<%if t.owner == current_user.id%>
 								<span class="badge">Owner</span>
@@ -39,7 +39,7 @@
 					
 					<a href=<%=competition_path(c)%> class="list-group-item"> 
 						<%=c.name%>
-						<span class="hidden-xs pull-right">
+						<span class="hidden-xs">
 							<span class="badge">Owner</span>
 						</span>
 						<span class="visible-xs">
@@ -54,7 +54,7 @@
 					<%t.competitions.each do |c|%>
 					<a href=<%=competition_path(c)%> class="list-group-item"> 
 						<%=c.name%>
-						<span class="hidden-xs pull-right">
+						<span class="hidden-xs">
 							<span class="badge"><%=t.name%></span>
 						</span>
 						<span class="visible-xs">
@@ -84,16 +84,18 @@
 					<%puts @recent_result%>
 					<a href=<%=fixture_path(fix)%> class="list-group-item"> 
 						vs <%=Team.find(fix.getOpponent(cur_team.id)).name%>
-						<span class="hidden-xs pull-right">
+						<span class="hidden-xs">
 							<span class="badge"><%=cur_team.name%></span>
 							<span class="badge"><%=Competition.find(fix.competition_id).name%></span>
 							<span class="badge"><%=fix.getDashRes(cur_team.id)%></span>
+	
 						</span>
 						<span class="visible-xs">
 							<div class="row container">
 							<span class="badge"><%=cur_team.name%></span>
 							<span class="badge"><%=Competition.find(fix.competition_id).name%></span>
 							<span class="badge"><%=fix.getDashRes(cur_team.id)%></span>
+							
 							</div>
 						</span>
 					</a>
@@ -111,16 +113,16 @@
 					<%cur_team = f[1]%>
 					<a href=<%=fixture_path(fix)%> class="list-group-item"> 
 						vs <%=Team.find(fix.getOpponent(cur_team.id)).name%>
-						<span class="hidden-xs pull-right">
+						<span class="hidden-xs">
 							<span class="badge"><%=cur_team.name%></span>
 							<span class="badge"><%=Competition.find(fix.competition_id).name%></span>
-							
+							<span class="badge"><%="Gameweek " + fix.gameweek.to_s%></span>
 						</span>
 						<span class="visible-xs">
 							<div class="row container">
 							<span class="badge"><%=cur_team.name%></span>
 							<span class="badge"><%=Competition.find(fix.competition_id).name%></span>
-							
+							<span class="badge"><%="Gameweek " + fix.gameweek.to_s%></span>
 							</div>
 						</span>
 					</a>
