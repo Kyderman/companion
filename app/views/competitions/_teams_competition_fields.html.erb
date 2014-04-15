@@ -1,9 +1,10 @@
 <div class="nested-fields teams-competition-fields">
 	<div id="team_from_list">
-		<%= f.association :team, :collection => Team.all%>
-	
-	<%= link_to_remove_association 'remove team',f, :class=>"btn btn-default"%>
-	
+		
+		<%= f.association :team, :collection => Team.all, :label => false%>
+		
 	</div>
+	
+	<%= link_to_remove_association 'Remove',f, :class=>"btn btn-inv btn-block"%>
 	
 </div>

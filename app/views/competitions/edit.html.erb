@@ -1,6 +1,10 @@
-<h1>Editing competition</h1>
+<div class="jumbotron text-center no-b-pad white-b blue-t">
+	<h1>Edit <%=@competition.name%></h1>
+	<hr class="blue">
+	<%= link_to 'View', @competition, :class => 'btn btn-default' %> 
+</div>
+<div class="blue-b white-t">
+	<div class="container">
+		<%= render 'form' %>
+	
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @competition %> |
-<%= link_to 'Back', competitions_path %>
