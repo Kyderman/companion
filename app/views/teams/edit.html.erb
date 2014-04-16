@@ -1,11 +1,9 @@
-<h1>Editing team</h1>
 
+
+<div class="jumbotron text-center no-b-pad white-b blue-t">
+	<h1>Edit <%=@team.name%></h1>
+	<hr class="blue">
+	<%= link_to 'View', @team, :class => 'btn btn-default' %> 
+	<%= link_to 'Remove', @team, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default' %>
+</div>
 <%= render 'form' %>
-
-<%= link_to 'Show', @team %> |
-<%= link_to 'Back', teams_path %>
-
-<h1>users</h1>
-<%@team.users.each do |t|%>
-<%=t.name%>
-<%end%>

@@ -1,30 +1,39 @@
-<%= horizontal_form_for(@team) do |f| %>
+
+
+<%= simple_form_for(@team) do |f| %>
   <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :sport %>
-  </div>
-	<div id="users">
-		<%= f.simple_fields_for :teams_users do |teams_user|%>
-			<%= render 'teams_user_fields', :f => teams_user%>
-		<%end%>	
-		
-		<div class="links">
-			<%= link_to_add_association 'Add User', f, :teams_users, :class=>"btn btn-inv"%>
-		</div>
-		
-	</div>
-	
-  </div>
-  </div>
-  <div class="white-b blue-t">
+  <div class="blue-b white-t">
 	<div class="container">
+		<h3>Basic Information</h3>
+	  <div class="form-inputs">
+	    <%= f.input :name %>
+	    <br>
+	    <%= f.input :sport %>
+	  </div>
+		<div id="teams">
+			<h3>Users</h3>
+			<%= f.simple_fields_for :teams_users do |teams_user|%>
+				<%= render 'teams_user_fields', :f => teams_user%>
+			<%end%>	
+			
+			
+				<div class="links">
+					<br>
+					<%= link_to_add_association 'Add User', f, :teams_users, :class=>"btn btn-inv btn-block"%>
+				</div>
+			
+		</div>
+		<br>
+	 </div>
+	</div>
+	<br>
+	<div class="white-b blue-t">
+	<div class="container"> 
 		<div class="form-actions">
-    <%= f.button :submit, :class=>"btn btn-inv" %>
-    </div>
-  	</div>
-  </div>
+	    	<%= f.button :submit, :class=>"btn btn-default btn-block" %>
+	    	<br>
+	  	</div>
+	</div>
+	</div>
 <% end %>
-
 
