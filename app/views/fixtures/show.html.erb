@@ -1,39 +1,38 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Gameweek:</strong>
-  <%= @fixture.gameweek %>
-</p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @fixture.location %>
-</p>
-
-<p>
-  <strong>Team 1:</strong>
-  <%= @fixture.team_1 %>
-</p>
-
-<p>
-  <strong>Team 2:</strong>
-  <%= @fixture.team_2 %>
-</p>
-
-<p>
-  <strong>Team 1 score:</strong>
-  <%= @fixture.team_1_score %>
-</p>
-
-<p>
-  <strong>Team 2 score:</strong>
-  <%= @fixture.team_2_score %>
-</p>
-
-<p>
-  <strong>Competition:</strong>
-  <%= @fixture.competition_id %>
-</p>
-
-<%= link_to 'Edit', edit_fixture_path(@fixture) %> |
-<%= link_to 'Back', fixtures_path %>
+<div class="jumbotron text-center no-b-pad white-b blue-t">
+			<div class="row">
+				<div class="visible-xs col-xs-12">
+					<h2><%=Team.find(@fixture.team_1).name%></h2>
+				</div>
+				<div class="visible-xs col-xs-12">
+					<h2><span class="label label-default"><%=@fixture.team_1_score%></span></h2>
+				</div>
+				<div class="visible-xs col-xs-12">
+					<h2>vs</h2>
+				</div>
+				<div class="visible-xs col-xs-12">
+					<h2><span class="label label-default"><%=@fixture.team_2_score%></span></h2>
+				</div>
+				<div class="visible-xs col-xs-12">
+					<h2><%=Team.find(@fixture.team_2).name%></h2>
+				</div>
+				<div class="hidden-xs col-sm-5">
+					<h2 class="pull-right"><%=Team.find(@fixture.team_1).name%> <span class="label label-default"><%=@fixture.team_1_score%></span></h2>
+				</div>
+				<div class="hidden-xs col-sm-2">
+					<h2>vs</h2>
+				</div>
+				<div class="hidden-xs col-sm-5">
+					<h2 class="pull-left"><span class="label label-default"><%=@fixture.team_2_score%></span> <%=Team.find(@fixture.team_2).name%></h2>
+				</div>
+			</div>
+			<h2><%=@fixture.competition.name%></h2>
+			<h3><%=@fixture.location%></h3>
+			<h3>Gameweek <%=@fixture.gameweek%></h3>
+			<hr class="blue">
+			<div class="col-md-offset-4 col-md-4 col-md-offset-4">
+			<%=link_to 'Edit', edit_fixture_path(@fixture), :class => 'btn btn-default'%>
+			</div>
+			<br>
+		</div>
