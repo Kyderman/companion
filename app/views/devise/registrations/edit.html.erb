@@ -1,7 +1,14 @@
 <div class="authform">
-  <h3>Edit <%= resource_name.to_s.humanize %></h3>
+  
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f| %>
+    <div class="jumbotron text-center no-b-pad white-b blue-t">
+    <h1>Edit <%= resource_name.to_s.humanize %></h1>
+    <hr class="blue">
     <%= devise_error_messages! %>
+    </div>
+    <div class="blue-b white-t">
+    	<div class="container">
+    		<br>
     <div class="form-group">
       <%= f.label :name %>
       <%= f.text_field :name, :autofocus => true, class: 'form-control' %>
@@ -30,12 +37,29 @@
         <%= f.label :current_password %>
         <%= f.password_field :current_password, class: 'form-control' %>
       </div>
+     
+      
     </fieldset>
-    <%= f.submit 'Update', :class => 'button right' %>
+     <br>
+    </div>
+      </div>
+       <div class="white-b blue-t">
+       	<div class="container">
+       		<br>
+    <%= f.submit 'Update', :class => 'btn btn-default btn-block' %>
+    <br>
+    </div>
+    </div>
   <% end %>
 </div>
 <div class="authform">
+	<div class="text-center blue-b white-t">
+		<br>
 <h3>Cancel Account</h3>
 <p>Unhappy? We'll be sad to see you go.</p>
-<%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button right' %>
+<%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-inv' %>
+<br>
+<br>
+</div>
+
 </div>
