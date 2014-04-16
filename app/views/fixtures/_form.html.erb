@@ -1,17 +1,24 @@
 <%= simple_form_for(@fixture) do |f| %>
   <%= f.error_notification %>
-
+	<div class="blue-b white-t">
+		<div class="container">
+			<br>
   <div class="form-inputs">
-    <%= f.input :gameweek %>
     <%= f.input :location %>
-    <%= f.input :team_1 %>
-    <%= f.input :team_2 %>
-    <%= f.input :team_1_score %>
-    <%= f.input :team_2_score %>
-    <%= f.input :competition_id %>
+   
+    <%= f.input :team_1_score, :label => Team.find(@fixture.team_1).name + "'s goals"%>
+    <%= f.input :team_2_score, :label => Team.find(@fixture.team_2).name + "'s goals"%>
   </div>
-
+  <br>
+	</div>
+	</div>
+	<div class="white-b blue-t">
+		<div class="container">
+			<br>
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => 'btn btn-default btn-block' %>
+  </div>
+  <br>
+  </div>
   </div>
 <% end %>
